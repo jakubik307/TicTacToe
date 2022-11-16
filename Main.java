@@ -7,7 +7,7 @@ public class Main {
 
     public static void getUserMove(char[] board) {
         Scanner scanner = new Scanner(System.in);
-        boolean error = false;
+        boolean error;
 
         do {
             try {
@@ -25,12 +25,16 @@ public class Main {
                 } else if (board[index] == 'O' || board[index] == 'X') {
                     System.out.println("This cell is occupied! Choose another one!");
                     error = true;
+                } else {
+                    board[index] = 'X';
                 }
             } catch (InputMismatchException e) {
                 System.out.println("You should enter numbers!");
                 error = true;
             }
         } while (error);
+
+        printBoard(board);
 
     }
 
