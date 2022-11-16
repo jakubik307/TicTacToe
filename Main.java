@@ -1,8 +1,25 @@
 package tictactoe;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+
+    public static void getUserMove(char[] board) {
+        Scanner scanner = new Scanner(System.in);
+        boolean error = false;
+
+        do {
+            try {
+                int x = scanner.nextInt();
+                int y = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("You should enter numbers!");
+                error = true;
+            }
+        } while (error);
+
+    }
 
     public static void checkGameState(char[] board) {
         int x = 0;
@@ -47,6 +64,14 @@ public class Main {
         }
     }
 
+    private static void printBoard(char[] board) {
+        System.out.println("---------");
+        System.out.println("| " + board[0] + " " + board[1] + " " + board[2] + " |");
+        System.out.println("| " + board[3] + " " + board[4] + " " + board[5] + " |");
+        System.out.println("| " + board[6] + " " + board[7] + " " + board[8] + " |");
+        System.out.println("---------");
+    }
+
     public static void main(String[] args) {
         char[] board = new char[9];
         Scanner scanner = new Scanner(System.in);
@@ -56,13 +81,11 @@ public class Main {
             board[i] = input.charAt(i);
         }
 
-        System.out.println("---------");
-        System.out.println("| " + board[0] + " " + board[1] + " " + board[2] + " |");
-        System.out.println("| " + board[3] + " " + board[4] + " " + board[5] + " |");
-        System.out.println("| " + board[6] + " " + board[7] + " " + board[8] + " |");
-        System.out.println("---------");
+        printBoard(board);
 
         checkGameState(board);
+
+        getUserMove(board);
 
     }
 }
