@@ -11,8 +11,21 @@ public class Main {
 
         do {
             try {
+                error = false;
+
                 int x = scanner.nextInt();
                 int y = scanner.nextInt();
+
+                int index = ((x - 1) * 3) + y - 1;
+
+
+                if (x < 1 || x > 3 || y < 1 || y > 3) {
+                    System.out.println("Coordinates should be from 1 to 3");
+                    error = true;
+                } else if (board[index] == 'O' || board[index] == 'X') {
+                    System.out.println("This cell is occupied! Choose another one!");
+                    error = true;
+                }
             } catch (InputMismatchException e) {
                 System.out.println("You should enter numbers!");
                 error = true;
