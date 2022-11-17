@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void getUserMove(char[] board) {
+    public static void getUserMove(char[] board, boolean playerXTurn) {
         Scanner scanner = new Scanner(System.in);
         boolean error;
 
@@ -18,15 +18,16 @@ public class Main {
 
                 int index = ((x - 1) * 3) + y - 1;
 
-
                 if (x < 1 || x > 3 || y < 1 || y > 3) {
                     System.out.println("Coordinates should be from 1 to 3");
                     error = true;
                 } else if (board[index] == 'O' || board[index] == 'X') {
                     System.out.println("This cell is occupied! Choose another one!");
                     error = true;
-                } else {
+                } else if (playerXTurn){
                     board[index] = 'X';
+                } else {
+                    board[index] = 'O';
                 }
             } catch (InputMismatchException e) {
                 System.out.println("You should enter numbers!");
@@ -35,7 +36,6 @@ public class Main {
         } while (error);
 
         printBoard(board);
-
     }
 
     public static boolean checkGameState(char[] board) {
@@ -96,6 +96,7 @@ public class Main {
 
     public static void main(String[] args) {
         char[] board = new char[9];
+        boolean playerXTurn = true;
 
         for (int i = 0; i < 9; i++) {
             board[i] = ' ';
@@ -104,9 +105,9 @@ public class Main {
         printBoard(board);
 
         while (checkGameState(board)) {
-            getUserMove(board);
+            getUserMove(board, playerXTurn);
+            playerXTurn = !playerXTurn;
         }
-
 
     }
 }
