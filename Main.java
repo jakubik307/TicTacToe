@@ -62,12 +62,10 @@ public class Main {
 
         if (board[0] == board[1] && board[1] == board[2] && board[0] == 'X' || board[3] == board[4] && board[4] == board[5] && board[3] == 'X' || board[6] == board[7] && board[7] == board[8] && board[6] == 'X' || board[0] == board[3] && board[3] == board[6] && board[0] == 'X' || board[1] == board[4] && board[4] == board[7] && board[1] == 'X' || board[2] == board[5] && board[5] == board[8] && board[2] == 'X' || board[0] == board[4] && board[4] == board[8] && board[0] == 'X' || board[2] == board[4] && board[4] == board[6] && board[2] == 'X') {
             xWin = true;
-            return false;
         }
 
         if (board[0] == board[1] && board[1] == board[2] && board[0] == 'O' || board[3] == board[4] && board[4] == board[5] && board[3] == 'O' || board[6] == board[7] && board[7] == board[8] && board[6] == 'O' || board[0] == board[3] && board[3] == board[6] && board[0] == 'O' || board[1] == board[4] && board[4] == board[7] && board[1] == 'O' || board[2] == board[5] && board[5] == board[8] && board[2] == 'O' || board[0] == board[4] && board[4] == board[8] && board[0] == 'O' || board[2] == board[4] && board[4] == board[6] && board[2] == 'O') {
             oWin = true;
-            return false;
         }
 
         if (oWin && xWin) {
