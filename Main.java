@@ -32,6 +32,7 @@ public class Main {
             } catch (InputMismatchException e) {
                 System.out.println("You should enter numbers!");
                 error = true;
+                scanner.next();
             }
         } while (error);
 
